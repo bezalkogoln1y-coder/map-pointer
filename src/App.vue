@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style lang="less">
+.toast__error {
+   background-color: #f44336 !important;
+}
+
 .heading {
    margin-bottom: 3rem;
 }

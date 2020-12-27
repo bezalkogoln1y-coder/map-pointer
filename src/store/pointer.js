@@ -3,7 +3,7 @@ import Axios from 'axios';
 Axios.defaults.baseURL = process.env.VUE_APP_POINTER_BASE_URL;
 
 const authData = {
-   login: 'apiTest1Kamaz@kamaz.ru',
+   email: 'apiTest1Kamaz@kamaz.ru',
    password: 'Test_123',
 };
 
@@ -41,14 +41,10 @@ export default {
       },
 
       Login({ commit }, data) {
-         if (
-            data.login !== authData.login ||
-            data.password !== authData.password
-         ) {
-            return false;
-         }
-
-         commit('updateAuth', true);
+         commit(
+            'updateAuth',
+            data.email === authData.email && data.password === authData.password
+         );
       },
    },
    mutations: {
