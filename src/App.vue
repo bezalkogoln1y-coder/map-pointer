@@ -12,17 +12,23 @@
 
 import BaseLayout from '@/layouts/Base';
 
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
    components: {
       BaseLayout,
    },
-   computed: {
-      Layout() {
-         return this.$route.meta.layout;
-      },
+   computed: mapGetters(['Layout']),
+   methods: mapActions(['setLayout', 'fetchAuth']),
+   created() {
+      this.setLayout(this.$route.meta.layout);
+      this.fetchAuth();
    },
 };
 </script>
 
-<style>
+<style lang="less">
+.heading {
+   margin-bottom: 3rem;
+}
 </style>

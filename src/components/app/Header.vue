@@ -1,14 +1,24 @@
 <template lang="pug">
-nav.blue.darken-2.lx-2
+nav.blue.darken-2
    .nav-wrapper
       RouterLink.brand-logo(to='/') Map Pointer
-      ul#nav-mobile.right.hide-on-med-and-down
+      ul#nav-mobile.right.hide-on-med-and-down(v-if='Auth')
          li
-            RouterLink(to='/logout') Выйти
+            a(href='/logout', @click.prevent='onLogout') Выйти
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from 'vuex';
+export default {
+   computed: mapGetters(['Auth']),
+   methods: {
+      ...mapActions(['Logout']),
+      onLogout() {
+         this.Logout();
+         this.$router.push('/auth');
+      },
+   },
+};
 </script>
 
 <style lang="less">
