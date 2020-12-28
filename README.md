@@ -44,15 +44,15 @@ npm run build
 
 ## Переменные окружения
 
-VUE_APP_POINTER_BASE_URL - базовый URL API
-VUE_APP_POINTER_AUTH_URL - базовый URL авторизации
-VUE_APP_MAP_KEY - API ключ гугл карт (личный)
+-  VUE_APP_POINTER_BASE_URL - базовый URL API
+-  VUE_APP_POINTER_AUTH_URL - базовый URL авторизации
+-  VUE_APP_MAP_KEY - API ключ гугл карт (личный)
 
 ## Добавленные плагины Webpack
 
-WebpackNotifier - баллон с уведомлением о сборке
+-  WebpackNotifier - баллон с уведомлением о сборке
 
 ## Доступные алиасы
 
-@ - Папка ./src
-@less - Папка @/less
+-  @ - Папка ./src
+-  @less - Папка @/less
