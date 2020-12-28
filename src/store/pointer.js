@@ -11,7 +11,7 @@ export default {
    state: {
       layout: '',
       pointers: [],
-      auth: true,
+      auth: false,
    },
    actions: {
       /**
@@ -25,7 +25,7 @@ export default {
       fetchAuth({ commit }) {
          Axios.defaults.baseURL = process.env.VUE_APP_POINTER_AUTH_URL;
 
-         commit('updateAuth', true);
+         commit('updateAuth', false);
       },
 
       fetchPointers({ commit }, pointers) {

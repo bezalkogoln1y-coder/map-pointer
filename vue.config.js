@@ -4,10 +4,9 @@ const WebpackNotifier = require('webpack-notifier');
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
-// console.log(path.resolve(__dirname, 'src/fonts'));
-
 module.exports = () => {
    let configure = {};
+
    configure.chainWebpack = (config) => {
       config.plugin('notifier').use(WebpackNotifier, [
          {
@@ -23,12 +22,6 @@ module.exports = () => {
       });
 
       config.resolve.alias.set('@less', path.resolve(__dirname, './src/less'));
-      config.output.filename('js/[name].min.js');
-      /* config.optimization.splitChunks({
-         cacheGroups: {
-            default: false,
-         },
-      }); */
    };
 
    return configure;
