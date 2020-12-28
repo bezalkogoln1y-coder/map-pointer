@@ -56,3 +56,8 @@ npm run build
 
 -  @ - Папка ./src
 -  @less - Папка @/less
+
+## Используемые библиотеки
+
+-  [Axios](https://www.npmjs.com/package/axios)
+-  [Materialize CSS](https://materializecss.com)
