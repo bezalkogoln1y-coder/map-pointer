@@ -54,7 +54,7 @@ export default {
       async Logout({ commit }) {
          Axios.defaults.baseURL = process.env.VUE_APP_POINTER_AUTH_URL;
 
-         await Axios.post('/tokens/cancel', {
+         await Axios.post('/tokens/delete', {
             sKey: localStorage.getItem('jwt_token'),
          });
 

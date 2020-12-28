@@ -30,6 +30,7 @@ export default {
 <style lang="less">
 .toast__error {
    background-color: #f44336 !important;
+   font-weight: bold !important;
 }
 
 .heading {
