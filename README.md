@@ -1,24 +1,49 @@
-# ntc.test
+# Map Pointer
 
-## Project setup
+## Инициализация пакетов
+
+### Yarn
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### NPM
+
+```
+npm install
+```
+
+## Компиляция и запуск сервера
+
+### Yarn
+
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### NPM
+
+```
+npm run serve
+```
+
+## Компиляция и минификация файлов
+
+### Yarn
+
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### NPM
+
 ```
-yarn lint
+npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Переменные окружения
+
+VUE_APP_POINTER_BASE_URL - базовый URL API
+VUE_APP_POINTER_AUTH_URL - базовый URL авторизации
+VUE_APP_MAP_KEY - API ключ гугл карт (личный)
