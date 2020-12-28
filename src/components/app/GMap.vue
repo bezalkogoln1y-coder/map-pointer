@@ -15,7 +15,7 @@ export default {
       Options() {
          return {
             zoom: 6,
-            center: new window.google.maps.LatLng(this.Pointers[0].lat, this.Pointers[0].lon),
+            center: new window.google.maps.LatLng(this.Pointers[0].Lat, this.Pointers[0].Lon),
          };
       },
    },
@@ -23,7 +23,7 @@ export default {
       const map = new window.google.maps.Map(this.$refs.$map, this.Options);
       this.Pointers.forEach((item) => {
          new window.google.maps.Marker({
-            position: new window.google.maps.LatLng(item.lat, item.lon),
+            position: new window.google.maps.LatLng(item.Lat, item.Lon),
             map,
          });
       });

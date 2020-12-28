@@ -13,8 +13,8 @@ export default {
    computed: mapGetters(['Auth']),
    methods: {
       ...mapActions(['Logout']),
-      onLogout() {
-         this.Logout();
+      async onLogout() {
+         await this.Logout();
          this.$router.push('/auth');
       },
    },

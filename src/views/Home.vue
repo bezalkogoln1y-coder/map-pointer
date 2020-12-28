@@ -24,19 +24,23 @@ export default {
    },
    methods: mapActions(['fetchPointers']),
    computed: mapGetters(['Auth']),
-   mounted() {
+   async mounted() {
       if (!this.Auth) {
          this.$router.push('/auth');
+         return false;
       }
 
-      this.fetchPointers({
-         XTC549015K2519659: {
-            lat: 55,
-            lon: 52,
-         },
-         XTC549005J2512126: {
-            lat: 54,
-            lon: 52,
+      await this.fetchPointers({
+         documentDate: '2020-11-18',
+         positions: {
+            XTC549015K2519659: {
+               lat: 55,
+               lon: 52,
+            },
+            XTC549005J2512126: {
+               lat: 54,
+               lon: 52,
+            },
          },
       });
 

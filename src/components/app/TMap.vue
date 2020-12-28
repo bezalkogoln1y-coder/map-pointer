@@ -8,10 +8,10 @@
             th Широта
             th Долгота
       tbody
-         tr(v-for='{ key, lat, lon } in Pointers')
+         tr(v-for='{ key, Lat, Lon } in Pointers')
             td {{ key }}
-            td {{ lat }}
-            td {{ lon }}
+            td {{ Lat }}
+            td {{ Lon }}
 </template>
 
 <script>

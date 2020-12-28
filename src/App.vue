@@ -20,9 +20,9 @@ export default {
    },
    computed: mapGetters(['Layout']),
    methods: mapActions(['setLayout', 'fetchAuth']),
-   created() {
+   async created() {
       this.setLayout(this.$route.meta.layout);
-      this.fetchAuth();
+      await this.fetchAuth();
    },
 };
 </script>

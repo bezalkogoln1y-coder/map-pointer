@@ -50,14 +50,13 @@ export default {
    },
    methods: {
       ...mapActions(['Login']),
-      onSubmit() {
+      async onSubmit() {
          this.$v.$touch();
 
          if (!this.$v.$error) {
-            this.Login({ email: this.email, password: this.password });
+            await this.Login({ email: this.email, password: this.password });
 
             if (!this.Auth) {
-               console.log('Done');
                window.M.toast({ html: 'Неверный логин или пароль', classes: 'toast__error' });
                return false;
             }

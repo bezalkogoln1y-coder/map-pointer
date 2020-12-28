@@ -1,11 +1,10 @@
 import Axios from 'axios';
+Axios.defaults.validateStatus = () => true;
 
-Axios.defaults.baseURL = process.env.VUE_APP_POINTER_BASE_URL;
-
-const authData = {
+/* const authData = {
    email: 'apiTest1Kamaz@kamaz.ru',
    password: 'Test_123',
-};
+}; */
 
 export default {
    state: {
@@ -22,29 +21,60 @@ export default {
          commit('updateLayout', layout);
       },
 
-      fetchAuth({ commit }) {
-         Axios.defaults.baseURL = process.env.VUE_APP_POINTER_AUTH_URL;
+      async fetchAuth({ commit }) {
+         if (
+            localStorage.getItem('jwt') &&
+            localStorage.getItem('jwt').trim().length
+         ) {
+            commit('updateAuth', true);
+         }
 
          commit('updateAuth', false);
       },
 
-      fetchPointers({ commit }, pointers) {
+      async fetchPointers({ commit }, data) {
          const _pointers = [];
-         for (let key in pointers) {
-            _pointers.push({ key, ...pointers[key] });
+
+         Axios.defaults.baseURL = process.env.VUE_APP_POINTER_BASE_URL;
+
+         const res = await Axios.post('/Itis/position', data, {
+            headers: {
+               Authorization: `Bearer ${localStorage.getItem('jwt_token')}`,
+            },
+         });
+
+         for (let key in res.data) {
+            res.data[key].Lat = Number(res.data[key].Lat.replace(',', '.'));
+            res.data[key].Lon = Number(res.data[key].Lon.replace(',', '.'));
+            _pointers.push({ key, ...res.data[key] });
          }
          commit('updatePointers', _pointers);
       },
 
-      Logout({ commit }) {
+      async Logout({ commit }) {
+         Axios.defaults.baseURL = process.env.VUE_APP_POINTER_AUTH_URL;
+
+         await Axios.post('/tokens/cancel', {
+            sKey: localStorage.getItem('jwt_token'),
+         });
+
          commit('updateAuth', false);
       },
 
-      Login({ commit }, data) {
-         commit(
-            'updateAuth',
-            data.email === authData.email && data.password === authData.password
-         );
+      async Login({ commit }, data) {
+         Axios.defaults.baseURL = process.env.VUE_APP_POINTER_AUTH_URL;
+
+         const res = await Axios.post('/auth', {
+            username: data.email,
+            password: data.password,
+         });
+
+         if (res.status === 200) {
+            commit('updateAuth', res.data);
+            return true;
+         }
+
+         commit('updateAuth', false);
       },
    },
    mutations: {
@@ -55,7 +85,15 @@ export default {
          state.pointers = pointers;
       },
       updateAuth(state, auth) {
-         state.auth = auth;
+         if (auth) {
+            localStorage.setItem('jwt_token', auth);
+            state.auth = true;
+
+            return true;
+         }
+
+         localStorage.removeItem('jwt_token');
+         state.auth = false;
       },
    },
    getters: {
