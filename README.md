@@ -47,3 +47,12 @@ npm run build
 VUE_APP_POINTER_BASE_URL - базовый URL API
 VUE_APP_POINTER_AUTH_URL - базовый URL авторизации
 VUE_APP_MAP_KEY - API ключ гугл карт (личный)
+
+## Добавленные плагины Webpack
+
+WebpackNotifier - баллон с уведомлением о сборке
+
+## Доступные алиасы
+
+@ - Папка ./src
+@less - Папка @/less
