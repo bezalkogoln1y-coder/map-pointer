@@ -49,7 +49,7 @@ npm run build
 
 ## Добавленные плагины Webpack
 
--  WebpackNotifier - баллон с уведомлением о сборке
+-  [WebpackNotifier](https://github.com/Turbo87/webpack-notifier) - баллон с уведомлением о сборке
 
 ## Доступные алиасы
 
